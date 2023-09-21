@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
 
+// Database Connection
+
 mongoose.connect('mongodb+srv://kalsariyajemish:jemish123@cluster0.wcxcfx3.mongodb.net/W3school')
 .then(() => console.log('connected!!'))
 .catch((err) => {
