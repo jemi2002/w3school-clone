@@ -3,11 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config()
+
 const mongoose = require('mongoose')
 
 // Database Connection
+mongoose.connect(process.env.mongodbUrl)
 
-mongoose.connect('mongodb+srv://kalsariyajemish:jemish123@cluster0.wcxcfx3.mongodb.net/W3school')
 .then(() => console.log('connected!!'))
 .catch((err) => {
   console.log(err.message);

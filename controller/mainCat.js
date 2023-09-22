@@ -242,7 +242,7 @@ exports.Signup= async function(req, res, next) {
   try { 
     req.body.password = await bcrypt.hash(req.body.password,10)
     const data = await ADMIN.create(req.body)
-    var token = jwt.sign({ id: data._id }, 'Om')
+    var token = jwt.sign({ id: data._id },  process.env.tokenkey)
     res.status(200).json({
       status : "✅" ,
       message : "Sign up succsessfully",
@@ -277,7 +277,7 @@ exports.Login = async function(req, res, next) {
     if (!checkpass) {
       throw new Error("please check password")
     }
-    var token = jwt.sign({ id: checkuser._id }, 'Om');
+    var token = jwt.sign({ id: checkuser._id }, process.env.tokenkey);
     res.status(200).json({
       status : "✅" ,
       message : "login succsessfully",
